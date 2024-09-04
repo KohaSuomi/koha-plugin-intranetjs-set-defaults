@@ -15,14 +15,14 @@ our $VERSION = "1.0.0";
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
-    name            => "IntranetUserJS: Set Koha fields/checkboxes defaults",
+    name            => "IntranetUserJS: Set defaults for Koha fields and checkboxes",
     author          => 'Lari Strand',
     date_authored   => '2024-09-04',
     date_updated    => '2024-09-04',
     minimum_version => '23.11',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Asettaa Kohaan oletusarvoja eri kentille ja valintaruuduille",
+    description     => "Asettaa Kohaan oletusarvoja eri kentille ja valintaruuduille. Määriteltävä.",
 };
 
 ## This is the minimum code required for a plugin's 'new' method
@@ -53,10 +53,16 @@ sub intranet_js {
     my $plugin_fulldir = $dir . "/Koha/Plugin/Fi/KohaSuomi/SetDefaults/";
     my $js = read_file($plugin_fulldir .'script.js');
     
-    # my $param_a = $self->retrieve_data('config_param_a');
+    my $param_a = $self->retrieve_data('config_param_a') || 0;
+    my $param_b = $self->retrieve_data('config_param_b') || 0;
+    my $param_c = $self->retrieve_data('config_param_c') || 0;
+    my $param_d = $self->retrieve_data('config_param_d') || 0;
     
-    ## Add REPLACE_BY_CONFIG_PARAM_A to the js script to replace it with the configuration parameter
-    # $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$param_a/r;
+    # Add REPLACE_BY_CONFIG_PARAM_A to the js script to replace it with the configuration parameter
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$param_a/r;
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_B/$param_b/r;
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_C/$param_c/r;
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_D/$param_d/r;
     
     utf8::decode($js);
     return "<script>$js</script>";
@@ -86,35 +92,41 @@ sub tool {
     $self->output_html( $template->output() );
 }
 
-## If your tool is complicated enough to needs it's own setting/configuration
-## you will want to add a 'configure' method to your plugin like so.
-## Here I am throwing all the logic into the 'configure' method, but it could
-## be split up like the 'report' method is.
-# sub configure {
-#     my ( $self, $args ) = @_;
-#     my $cgi = $self->{'cgi'};
+# If your tool is complicated enough to needs it's own setting/configuration
+# you will want to add a 'configure' method to your plugin like so.
+# Here I am throwing all the logic into the 'configure' method, but it could
+# be split up like the 'report' method is.
+sub configure {
+    my ( $self, $args ) = @_;
+    my $cgi = $self->{'cgi'};
 
-#     unless ( $cgi->param('save') ) {
-#         my $template = $self->get_template({ file => 'configure.tt' });
+    unless ( $cgi->param('save') ) {
+        my $template = $self->get_template({ file => 'configure.tt' });
 
-#         ## Grab the values we already have for our settings, if any exist
-#         $template->param(
-#             config_param_a => $self->retrieve_data('config_param_a'),
-#             last_upgraded   => $self->retrieve_data('last_upgraded'),
-#         );
+        ## Grab the values we already have for our settings, if any exist
+        $template->param(
+            config_param_a => $self->retrieve_data('config_param_a'),
+            config_param_b => $self->retrieve_data('config_param_b'),
+            config_param_c => $self->retrieve_data('config_param_c'),
+            config_param_d => $self->retrieve_data('config_param_d'),
+            last_upgraded   => $self->retrieve_data('last_upgraded'),
+        );
 
-#         $self->output_html( $template->output() );
-#     }
-#     else {
-#         $self->store_data(
-#             {
-#                 config_param_a => $cgi->param('config_param_a'),
-#                 last_configured_by => C4::Context->userenv->{'number'},
-#             }
-#         );
-#         $self->go_home();
-#     }
-# }
+        $self->output_html( $template->output() );
+    }
+    else {
+        $self->store_data(
+            {
+                config_param_a => $cgi->param('config_param_a'),
+                config_param_b => $cgi->param('config_param_b'),
+                config_param_c => $cgi->param('config_param_c'),
+                config_param_d => $cgi->param('config_param_d'),
+                last_configured_by => C4::Context->userenv->{'number'},
+            }
+        );
+        $self->go_home();
+    }
+}
 
 ## This is the 'install' method. Any database tables or other setup that should
 ## be done when the plugin if first installed should be executed in this method.

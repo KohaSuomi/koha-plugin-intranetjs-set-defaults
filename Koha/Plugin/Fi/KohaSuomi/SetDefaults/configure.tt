@@ -7,9 +7,9 @@
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Set Koha fields/checkboxes defaults &rsaquo; Configuration</div>
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Set defaults for Koha fields and checkboxes &rsaquo; Configuration</div>
 
-<div id="doc3">
+<div id="doc3" style="margin-left: 20px;">
 
     <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. You could hard code it instead if you prefer -->
     <form method="get">
@@ -17,12 +17,39 @@
         <input type="hidden" name="class" value="[% CLASS %]"/>
         <input type="hidden" name="method" value="[% METHOD %]"/>
 
-        <p>
+        <p style="max-width:500px;">
 
-        <label for="config_param_a">Käytettävän raportin ID: </label>
-        <input type="text" name="config_param_a" value="[% config_param_a %]" />
+        <label for="config_param_a">Laita raksi "Poista käsin poistettujen varausten maksut" -kohtaan palautuksessa.<br>
+        Tällä estetään noutamattoman varauksen maksun syntyminen, kun noudettavissa oleva varaus poistetaan palautuksen kautta.<br>
+        Huom! Ei toimi, jos palautus tehdään muualla kuin Palautus-sivulla.</label><br>
+        <input type="text" name="config_param_a" value="[% config_param_a %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
-        <p>
+        </p>
+        <hr>
+        <p style="max-width:500px;">
+
+        <label for="config_param_b">Asiakkaalle lähtevien ilmoitusten oletuskielivalinta suomeksi.</label><br>
+        <input type="text" name="config_param_b" value="[% config_param_b %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <hr>
+        <p style="max-width:500px;">
+
+        <label for="config_param_c">Laita niteiden eräpoistossa raksi kohtaan "Poista tietueet, jos kaikki niteet poistettu". Tällä varmistetaan, että tietokantaan ei jää niteettömiä tietueita.</label><br>
+        <input type="text" name="config_param_c" value="[% config_param_c %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <hr>
+        <p style="max-width:500px;">
+
+        <label for="config_param_d">Kausijulkaisujen vastaanoton oletuskirjastoksi kirjautumiskirjasto.</label><br>
+        <input type="text" name="config_param_d" value="[% config_param_d %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <hr>
+        
+        
+        
 
         <input type="hidden" name="save" value="1" />
 
