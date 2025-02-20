@@ -47,9 +47,13 @@
 
         </p>
         <hr>
-        
-        
-        
+        <p style="max-width:500px;">
+
+        <label for="config_param_e">Asiakastakaaja-osion Suhde-arvo valmiiksi valituksi.</label><br>
+        <input type="text" name="config_param_e" value="[% config_param_e %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <hr>
 
         <input type="hidden" name="save" value="1" />
 
