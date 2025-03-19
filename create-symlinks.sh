@@ -1,6 +1,6 @@
 #!/bin/sh
 
-die() { echo "$@"; exit 1; } 
+die() { echo "$@"; exit 1; }
 
 # Switch to root
 if test "$(whoami)" != "root"; then
