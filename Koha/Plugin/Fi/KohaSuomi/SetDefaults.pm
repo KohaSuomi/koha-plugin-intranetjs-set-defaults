@@ -22,7 +22,7 @@ our $metadata = {
     minimum_version => '23.11',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Asettaa Kohaan oletusarvoja eri kentille ja valintaruuduille. Määriteltävä.",
+    description     => "Asettaa Kohaan oletusarvoja eri kentille ja valintaruuduille. Määriteltävä. (Paikalliskannat)",
 };
 
 ## This is the minimum code required for a plugin's 'new' method
