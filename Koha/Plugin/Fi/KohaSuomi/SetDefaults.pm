@@ -120,11 +120,11 @@ sub configure {
     else {
         $self->store_data(
             {
-                config_param_a => $cgi->param('config_param_a'),
-                config_param_b => $cgi->param('config_param_b'),
-                config_param_c => $cgi->param('config_param_c'),
-                config_param_d => $cgi->param('config_param_d'),
-                config_param_e => $cgi->param('config_param_e'),
+                config_param_a => scalar $cgi->param('config_param_a'),
+                config_param_b => scalar $cgi->param('config_param_b'),
+                config_param_c => scalar $cgi->param('config_param_c'),
+                config_param_d => scalar $cgi->param('config_param_d'),
+                config_param_e => scalar $cgi->param('config_param_e'),
                 last_configured_by => C4::Context->userenv->{'number'},
             }
         );
