@@ -57,8 +57,14 @@
         <p style="max-width:500px;">
 
         <label for="config_param_f">Asiakkaan ensisijainen yhteydenottotapa 'email' valmiiksi valituksi asiakkaan lisäys/muokkauslomakkeella.
-.</label><br>
+        Asiakkaan ensisijainen yhteydenottotapa-asetusta tarvitaan, jos asiakastyypille on pakotettu vanhenemisilmoitusten lähettäminen. Tällöin ilmoitukset vanhenevasta asiakastilistä lähetetään valitun yhteydenottotavan mukaisesti.</label><br>
         <input type="text" name="config_param_f" value="[% config_param_f %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <p style="max-width:500px;">
+
+        <label for="config_param_g">Piilota Asiakkaan ensisijainen yhteydenottotapa-kenttä asiakastietojen lisäys/muokkauslomakkeella.</label><br>
+        <input type="text" name="config_param_g" value="[% config_param_g %]" placeholder="1=Piilota, 0=Älä piilota"/>
 
         </p>
         <hr>
