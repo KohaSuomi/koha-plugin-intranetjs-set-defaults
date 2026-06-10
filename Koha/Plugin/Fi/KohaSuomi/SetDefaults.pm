@@ -22,8 +22,27 @@ our $metadata = {
     minimum_version => '23.11',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Asettaa Kohaan oletusarvoja eri kentille ja valintaruuduille. Määriteltävä. (Paikalliskannat)",
+    description     => "Sets default values for various fields and checkboxes in Koha. Configure as needed. (Local databases)",
 };
+
+sub get_localized_metadata {
+    my ($self) = @_;
+    my $lang = C4::Languages::getlanguage() || 'en';
+    my ($name, $description);
+
+    if ($lang eq 'sv-SE') {
+        $name = "IntranetUserJS: Ange standardvärden för Koha-fält och kryssrutor";
+        $description = "Anger standardvärden för olika fält och kryssrutor i Koha. Konfigurera enligt behov. (Lokala databaser)";
+    
+    } elsif ($lang eq 'fi-FI' ) {
+        $name = "IntranetUserJS: Aseta oletusarvot Koha-kentille ja valintaruuduille";
+        $description = "Asettaa oletusarvoja eri kentille ja valintaruuduille. Määriteltävä. (Paikalliskannat)";
+    } else {
+        $name = "IntranetUserJS: Set defaults for Koha fields and checkboxes";
+        $description = "Sets default values for various fields and checkboxes in Koha. Configure as needed. (Local databases)";
+    }
+    return ($name, $description);
+}
 
 ## This is the minimum code required for a plugin's 'new' method
 ## More can be added, but none should be removed
@@ -38,6 +57,10 @@ sub new {
     ## This runs some additional magic and checking
     ## and returns our actual 
     my $self = $class->SUPER::new($args);
+
+    my ($name, $description) = $self->get_localized_metadata();
+    $self->{'metadata'}->{'name'} = $name;
+    $self->{'metadata'}->{'description'} = $description;
 
     return $self;
 }

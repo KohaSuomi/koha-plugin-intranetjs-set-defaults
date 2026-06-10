@@ -1,13 +1,18 @@
+[% TRY %]
+    [% PROCESS "$PLUGIN_DIR/i18n/${LANG}.inc" %]
+[% CATCH %]
+    [% PROCESS "$PLUGIN_DIR/i18n/default.inc" %]
+[% END %]
 [% USE KohaDates %]
 [% INCLUDE 'doc-head-open.inc' %]
- <title>IntranetUserJS: Set Koha fields/checkboxes defaults Configuration</title>
+ <title>[% T.configure_1 %]</title>
 [% INCLUDE 'doc-head-close.inc' %]
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Set defaults for Koha fields and checkboxes &rsaquo; Configuration</div>
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">[% T.configure_2 %]</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">[% T.configure_3 %]</a>[% T.configure_4 %]</div>
 
 <div id="doc3" style="margin-left: 20px;">
 
@@ -19,37 +24,35 @@
 
         <p style="max-width:500px;">
 
-        <label for="config_param_a">Laita raksi "Poista käsin poistettujen varausten maksut" -kohtaan palautuksessa.<br>
-        Tällä estetään noutamattoman varauksen maksun syntyminen, kun noudettavissa oleva varaus poistetaan palautuksen kautta.<br>
-        Huom! Ei toimi, jos palautus tehdään muualla kuin Palautus-sivulla.</label><br>
+        <label for="config_param_a">[% T.configure_5 %]<br>[% T.configure_6 %]<br>[% T.configure_7 %]</label><br>
         <input type="text" name="config_param_a" value="[% config_param_a %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_b">Asiakkaalle lähtevien ilmoitusten oletuskielivalinta suomeksi.</label><br>
+        <label for="config_param_b">[% T.configure_8 %]</label><br>
         <input type="text" name="config_param_b" value="[% config_param_b %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_c">Laita niteiden eräpoistossa raksi kohtaan "Poista tietueet, jos kaikki niteet poistettu". Tällä varmistetaan, että tietokantaan ei jää niteettömiä tietueita.</label><br>
+        <label for="config_param_c">[% T.configure_9 %]</label><br>
         <input type="text" name="config_param_c" value="[% config_param_c %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_d">Kausijulkaisujen vastaanoton oletuskirjastoksi kirjautumiskirjasto.</label><br>
+        <label for="config_param_d">[% T.configure_10 %]</label><br>
         <input type="text" name="config_param_d" value="[% config_param_d %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_e">Asiakastakaaja-osion Suhde-arvo valmiiksi valituksi.</label><br>
+        <label for="config_param_e">[% T.configure_11 %]</label><br>
         <input type="text" name="config_param_e" value="[% config_param_e %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
@@ -57,17 +60,17 @@
 
         <input type="hidden" name="save" value="1" />
 
-        <input type="submit" value="Save configuration" />
+        <input type="submit" value="[% T.configure_12 %]" />
     </form>
 
     <hr/>
 
     <p>
-        <h5>Upgrade status</h5>
+        <h5>[% T.configure_13 %]</h5>
         [% IF last_upgraded %]
             Plugin was last upgraded on this system on [% last_upgraded | $KohaDates with_hours => 1 %]
         [% ELSE %]
-            Plugin has never been upgraded.
+            [% T.configure_14 %]
         [% END %]
     </p>
 
