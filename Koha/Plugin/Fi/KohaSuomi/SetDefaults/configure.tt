@@ -5,14 +5,14 @@
 [% END %]
 [% USE KohaDates %]
 [% INCLUDE 'doc-head-open.inc' %]
- <title>[% T.configure_1 %]</title>
+ <title>[% T.configure_7 %]</title>
 [% INCLUDE 'doc-head-close.inc' %]
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Set defaults for Koha fields and checkboxes &rsaquo; Configuration</div>
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">[% T.configure_1 %]</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">[% T.configure_2 %]</a>[% T.configure_3 %]</div>
 <br>
 <div id="doc3" style="margin-left: 20px;">
 
@@ -24,49 +24,48 @@
 
         <p style="max-width:500px;">
 
-        <label for="config_param_a">[% T.configure_5 %]<br>[% T.configure_6 %]<br>[% T.configure_7 %]</label><br>
+        <label for="config_param_a">[% T.configure_8 %]<br>[% T.configure_9 %]<br>[% T.configure_10 %]</label><br>
         <input type="text" name="config_param_a" value="[% config_param_a %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_b">[% T.configure_8 %]</label><br>
+        <label for="config_param_b">[% T.configure_11 %]</label><br>
         <input type="text" name="config_param_b" value="[% config_param_b %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_c">[% T.configure_9 %]</label><br>
+        <label for="config_param_c">[% T.configure_12 %]</label><br>
         <input type="text" name="config_param_c" value="[% config_param_c %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_d">[% T.configure_10 %]</label><br>
+        <label for="config_param_d">[% T.configure_13 %]</label><br>
         <input type="text" name="config_param_d" value="[% config_param_d %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_e">[% T.configure_11 %]</label><br>
+        <label for="config_param_e">[% T.configure_14 %]</label><br>
         <input type="text" name="config_param_e" value="[% config_param_e %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <hr>
         <p style="max-width:500px;">
 
-        <label for="config_param_f">Asiakkaan ensisijainen yhteydenottotapa 'email' valmiiksi valituksi asiakkaan lisäys/muokkauslomakkeella.
-        Asiakkaan ensisijainen yhteydenottotapa-asetusta tarvitaan, jos asiakastyypille on pakotettu vanhenemisilmoitusten lähettäminen. Tällöin ilmoitukset vanhenevasta asiakastilistä lähetetään valitun yhteydenottotavan mukaisesti.</label><br>
+        <label for="config_param_f">[% T.configure_4 %]<br>[% T.configure_5 %]</label><br>
         <input type="text" name="config_param_f" value="[% config_param_f %]" placeholder="1=Käytä, 0=Älä käytä"/>
 
         </p>
         <p style="max-width:500px;">
 
-        <label for="config_param_g">Piilota Asiakkaan ensisijainen yhteydenottotapa-kenttä asiakastietojen lisäys/muokkauslomakkeella.</label><br>
+        <label for="config_param_g">[% T.configure_6 %]</label><br>
         <input type="text" name="config_param_g" value="[% config_param_g %]" placeholder="1=Piilota, 0=Älä piilota"/>
 
         </p>
@@ -74,19 +73,18 @@
 
         <input type="hidden" name="save" value="1" />
 
-        <input type="submit" value="[% T.configure_12 %]" />
+        <input type="submit" value="[% T.configure_15 %]" />
     </form>
 
     <hr/>
 
     <p>
-        <h5>[% T.configure_13 %]</h5>
+        <h5>[% T.configure_16 %]</h5>
         [% IF last_upgraded %]
             Plugin was last upgraded on this system on [% last_upgraded | $KohaDates with_hours => 1 %]
         [% ELSE %]
-            [% T.configure_14 %]
+            [% T.configure_17 %]
         [% END %]
     </p>
 
 [% INCLUDE 'intranet-bottom.inc' %]
-
