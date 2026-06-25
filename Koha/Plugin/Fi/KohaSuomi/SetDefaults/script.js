@@ -3,6 +3,8 @@ var param_b = REPLACE_BY_CONFIG_PARAM_B;
 var param_c = REPLACE_BY_CONFIG_PARAM_C;
 var param_d = REPLACE_BY_CONFIG_PARAM_D;
 var param_e = REPLACE_BY_CONFIG_PARAM_E;
+var param_f = REPLACE_BY_CONFIG_PARAM_F;
+var param_g = REPLACE_BY_CONFIG_PARAM_G;
 
 /// ALKU ///
 /* Laita raksi "Poista käsin poistettujen varausten maksut" -kohtaa palautuksessa. Tällä estetään noutamattoman varauksen maksun syntyminen, kun varaus noudettavissa oleva varaus poistetaan palautuksen kautta. Huom! Ei toimi, jos palautus tehdään muualla kuin Palautus-sivulla. */
@@ -65,6 +67,30 @@ $(document).ready(function () {
         if (window.location.href.indexOf("members/memberentry.pl") > -1) {
             $('.relationship option:eq(1)').attr('selected', 'selected');
             $(".new_guarantor_relationship option:eq(1)").attr('selected', 'selected');
+        }
+    }
+});
+///LOPPU///
+
+///ALKU///
+//Asiakastakaaja-osion Suhde-arvo valmiiksi valituksi
+$(document).ready(function () {
+    if (param_f == "1"){
+        if (window.location.href.indexOf("members/memberentry.pl") > -1) {
+           $('#primary_contact_method option[value="email"]').attr('selected', 'selected');
+           $('#primary_contact_method').change();
+        }
+    }
+});
+///LOPPU///
+
+///ALKU///
+//Asiakastakaaja-osion Suhde-arvo valmiiksi valituksi
+$(document).ready(function () {
+    if (param_g == "1"){
+        if (window.location.href.indexOf("members/memberentry.pl") > -1) {
+           $('#primary_contact_method').hide();
+           $('label[for="primary_contact_method"]').hide();
         }
     }
 });

@@ -55,7 +55,7 @@ sub new {
 
     ## Here, we call the 'new' method for our base class
     ## This runs some additional magic and checking
-    ## and returns our actual 
+    ## and returns our actual
     my $self = $class->SUPER::new($args);
 
     my ($name, $description) = $self->get_localized_metadata();
@@ -75,20 +75,25 @@ sub intranet_js {
     my $dir=C4::Context->config('pluginsdir');
     my $plugin_fulldir = $dir . "/Koha/Plugin/Fi/KohaSuomi/SetDefaults/";
     my $js = read_file($plugin_fulldir .'script.js');
-    
+
     my $param_a = $self->retrieve_data('config_param_a') || 0;
     my $param_b = $self->retrieve_data('config_param_b') || 0;
     my $param_c = $self->retrieve_data('config_param_c') || 0;
     my $param_d = $self->retrieve_data('config_param_d') || 0;
     my $param_e = $self->retrieve_data('config_param_e') || 0;
-    
+    my $param_f = $self->retrieve_data('config_param_f') || 0;
+    my $param_g = $self->retrieve_data('config_param_g') || 0;
+
     # Add REPLACE_BY_CONFIG_PARAM_A to the js script to replace it with the configuration parameter
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$param_a/r;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_B/$param_b/r;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_C/$param_c/r;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_D/$param_d/r;
     $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_E/$param_e/r;
-    
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_F/$param_f/r;
+    $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_G/$param_g/r;
+
+
     utf8::decode($js);
     return "<script>$js</script>";
 }
@@ -97,20 +102,20 @@ sub intranet_js {
 ## of running a tool. The difference between a tool and a report is
 ## primarily semantic, but in general any plugin that modifies the
 ## Koha database should be considered a tool
-sub tool {
+sub admin {
     my ( $self, $args ) = @_;
-    
+
     my $cgi = $self->{'cgi'};
     my $template = $self->get_template({ file => 'viewjs.tt' });
-    
+
     my $plugin_fulldir = $self->mbf_path();
     my $js = read_file($plugin_fulldir .'script.js');
-    
+
     # my $param_a = $self->retrieve_data('config_param_a');
-    
+
     ## Add REPLACE_BY_CONFIG_PARAM_A to the js script to replace it with the configuration parameter
     # $js = $js =~ s/REPLACE_BY_CONFIG_PARAM_A/$param_a/r;
-    
+
     utf8::decode($js);
     $template->param( 'jscontent' => $js );
 
@@ -135,6 +140,8 @@ sub configure {
             config_param_c => $self->retrieve_data('config_param_c'),
             config_param_d => $self->retrieve_data('config_param_d'),
             config_param_e => $self->retrieve_data('config_param_e'),
+            config_param_f => $self->retrieve_data('config_param_f'),
+            config_param_g => $self->retrieve_data('config_param_g'),
             last_upgraded   => $self->retrieve_data('last_upgraded'),
         );
 
@@ -143,11 +150,13 @@ sub configure {
     else {
         $self->store_data(
             {
-                config_param_a => scalar $cgi->param('config_param_a'),
-                config_param_b => scalar $cgi->param('config_param_b'),
-                config_param_c => scalar $cgi->param('config_param_c'),
-                config_param_d => scalar $cgi->param('config_param_d'),
-                config_param_e => scalar $cgi->param('config_param_e'),
+                config_param_a => $cgi->param('config_param_a'),
+                config_param_b => $cgi->param('config_param_b'),
+                config_param_c => $cgi->param('config_param_c'),
+                config_param_d => $cgi->param('config_param_d'),
+                config_param_e => $cgi->param('config_param_e'),
+                config_param_f => $cgi->param('config_param_f'),
+                config_param_g => $cgi->param('config_param_g'),
                 last_configured_by => C4::Context->userenv->{'number'},
             }
         );
@@ -167,7 +176,7 @@ sub install() {
                 type => 'intranetUserJs',
             }
         );
-        
+
     return 1;
 }
 

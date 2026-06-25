@@ -12,8 +12,8 @@
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">[% T.configure_2 %]</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">[% T.configure_3 %]</a>[% T.configure_4 %]</div>
-
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Set defaults for Koha fields and checkboxes &rsaquo; Configuration</div>
+<br>
 <div id="doc3" style="margin-left: 20px;">
 
     <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. You could hard code it instead if you prefer -->
@@ -54,6 +54,20 @@
 
         <label for="config_param_e">[% T.configure_11 %]</label><br>
         <input type="text" name="config_param_e" value="[% config_param_e %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <hr>
+        <p style="max-width:500px;">
+
+        <label for="config_param_f">Asiakkaan ensisijainen yhteydenottotapa 'email' valmiiksi valituksi asiakkaan lisäys/muokkauslomakkeella.
+        Asiakkaan ensisijainen yhteydenottotapa-asetusta tarvitaan, jos asiakastyypille on pakotettu vanhenemisilmoitusten lähettäminen. Tällöin ilmoitukset vanhenevasta asiakastilistä lähetetään valitun yhteydenottotavan mukaisesti.</label><br>
+        <input type="text" name="config_param_f" value="[% config_param_f %]" placeholder="1=Käytä, 0=Älä käytä"/>
+
+        </p>
+        <p style="max-width:500px;">
+
+        <label for="config_param_g">Piilota Asiakkaan ensisijainen yhteydenottotapa-kenttä asiakastietojen lisäys/muokkauslomakkeella.</label><br>
+        <input type="text" name="config_param_g" value="[% config_param_g %]" placeholder="1=Piilota, 0=Älä piilota"/>
 
         </p>
         <hr>
